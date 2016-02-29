@@ -1,7 +1,16 @@
 var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var ENV = process.env.ENV = process.env.NODE_ENV ='developemnt';
+
+var metadata = {
+    ENV: ENV
+};
 
 module.exports = {
 
+    metadata: metadata,
     devtooL: 'source-map',
     debug: true,
     entry: { 'polyfills': './src/polyfills.ts',
@@ -29,7 +38,17 @@ module.exports = {
             { test: /.css$/, loader: 'raw-loader' },
             { test: /.html$/, loader: 'raw-loader', exclude: [ root('src/index.html') ] }
         ]
-    }
+    },
+
+    plugins: [
+
+        new HtmlWebpackPlugin({ template: 'src/index.html' }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'ENV': JSON.stringify(metadata.ENV)
+            }
+        })
+    ]
 
 };
 
