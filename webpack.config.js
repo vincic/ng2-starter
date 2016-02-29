@@ -2,10 +2,12 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var ENV = process.env.ENV = process.env.NODE_ENV ='developemnt';
+var ENV = 'developemnt';
 
 var metadata = {
-    ENV: ENV
+    ENV: 'development',
+    host: 'localhost',
+    port: 3000
 };
 
 module.exports = {
@@ -45,10 +47,19 @@ module.exports = {
         new HtmlWebpackPlugin({ template: 'src/index.html' }),
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(metadata.ENV)
+                'ENV': JSON.stringify(metadata.ENV),
+                'NODE_ENV': JSON.stringify(metadata.ENV)
             }
         })
-    ]
+    ],
+
+    devServer: {
+        port: metadata.port,
+        host: metadata.host,
+        watchOptions: { aggregateTimeout: 300, poll: 1000 }
+
+    },
+
 
 };
 

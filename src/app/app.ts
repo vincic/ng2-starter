@@ -2,6 +2,7 @@ import { Component } from 'angular2/core';
 import { RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { Home } from './home/home';
+import { WikiSearch } from './wikipedia/search';
 
 @Component({
 
@@ -15,7 +16,7 @@ import { Home } from './home/home';
 
 @RouteConfig([
     { path: '/', component: Home, name: 'Index' },
-    { path: '/about', component: Home,  name: 'About' },
+    { path: '/about', component: WikiSearch,  name: 'About' },
     { path: '/home', component: Home,  name: 'Home' },
     { path: '/**', redirectTo: ['Index'] }
 ])
