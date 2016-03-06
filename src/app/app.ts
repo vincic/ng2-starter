@@ -3,6 +3,7 @@ import { RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { Home } from './home/home';
 import { WikiSearch } from './wikipedia/search';
+import { WsMessage } from './websocket/component';
 
 @Component({
 
@@ -15,7 +16,7 @@ import { WikiSearch } from './wikipedia/search';
 })
 
 @RouteConfig([
-    { path: '/', component: Home, name: 'Index' },
+    { path: '/', component: WsMessage, name: 'Index' },
     { path: '/about', component: WikiSearch,  name: 'About' },
     { path: '/home', component: Home,  name: 'Home' },
     { path: '/**', redirectTo: ['Index'] }

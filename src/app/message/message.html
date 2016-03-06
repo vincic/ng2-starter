@@ -1,0 +1,9 @@
+<div>
+  <h2>Message</h2>
+  <input type="text" [ngFormControl]="message"/>
+  <ul>
+    <li *ngFor="#item of data | async">{{ item }}</li>
+  </ul>
+
+  {{ values }}
+</div>
