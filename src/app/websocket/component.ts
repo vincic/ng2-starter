@@ -27,11 +27,7 @@ export class WsMessage {
         this.values = this.wsService.wsdata;
 
         this.message.valueChanges
-            .debounceTime(500)
-            .map((msg) => {
-                console.log(msg);
-                this.wsService.send(msg)
-            }).subscribe();
+            .subscribe(msg => this.wsService.send(msg));
 
     }
 
