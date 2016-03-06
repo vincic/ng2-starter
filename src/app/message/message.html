@@ -2,8 +2,7 @@
   <h2>Message</h2>
   <input type="text" [ngFormControl]="message"/>
   <ul>
-    <li *ngFor="#item of data | async">{{ item }}</li>
+    <li *ngFor="#item of values | async">{{ item }}</li>
   </ul>
 
-  {{ values }}
 </div>

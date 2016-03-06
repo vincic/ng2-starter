@@ -12,6 +12,7 @@ export class WebsocketService {
     public  wsdata: Observable<any>;
 
     constructor() {
+
         this.wsdata = new Observable( observer => {
             console.log('observer', observer);
             this.dataStream = observer;
@@ -31,7 +32,6 @@ export class WebsocketService {
         }
 
         this.socket.onmessage = (ev: MessageEvent) => {
-            console.log(this);
             this.dataStream.next([ev.data]);
         }
 

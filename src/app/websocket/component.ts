@@ -24,13 +24,14 @@ export class WsMessage {
 
     constructor(private wsService: WebsocketService) {
 
-        this.wsService.wsdata.subscribe( (values) => {
-            this.values = values;
-        });
+        this.values = this.wsService.wsdata;
 
-        this.data = this.message.valueChanges
+        this.message.valueChanges
             .debounceTime(500)
-            .map(msg => this.wsService.send(msg));
+            .map((msg) => {
+                console.log(msg);
+                this.wsService.send(msg)
+            }).subscribe();
 
     }
 
